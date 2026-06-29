@@ -1,0 +1,55 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 360px;
+}
+
+.statusBadge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.statusActive {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.statusOverdue {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.daysNumber {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.daysLabel {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 16px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6b7280;
+  padding: 8px 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+.loadingText,
+.errorText {
+  padding: 1.5rem;
+  color: #6b7280;
+  font-size: 14px;
+}

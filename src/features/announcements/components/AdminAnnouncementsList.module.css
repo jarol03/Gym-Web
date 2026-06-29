@@ -1,0 +1,65 @@
+.container {
+  max-width: 700px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 10px;
+}
+
+.cardInactive {
+  opacity: 0.55;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.body {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.toggleButton {
+  background: none;
+  border: 1px solid #d1d5db;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.toggleButton:hover {
+  background: #f3f4f6;
+}
+
+.loadingText,
+.errorText {
+  padding: 1.5rem;
+  color: #6b7280;
+}

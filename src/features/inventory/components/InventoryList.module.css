@@ -1,0 +1,89 @@
+.container {
+  max-width: 700px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 8px;
+}
+
+.rowLowStock {
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.category {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qtyButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.qtyButton:hover {
+  background: #f3f4f6;
+}
+
+.quantity {
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 28px;
+  text-align: center;
+}
+
+.lowStockLabel {
+  font-size: 11px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.deleteButton:hover {
+  color: #dc2626;
+}
+
+.loadingText,
+.errorText {
+  padding: 1.5rem;
+  color: #6b7280;
+}

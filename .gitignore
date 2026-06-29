@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.env.*.local
+.vscode/*
+!.vscode/extensions.json
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+supabase/.temp
