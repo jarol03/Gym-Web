@@ -55,9 +55,23 @@ function HomePage() {
 }
 
 function AdminDashboardPage() {
+  const { profile, logout } = useAuth();
+
   return (
     <div style={{ padding: 24, maxWidth: 700, margin: "0 auto" }}>
-      <h1 style={{ marginBottom: 24 }}>Panel de administración</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 24,
+        }}
+      >
+        <h1 style={{ fontSize: 20 }}>
+          Panel de administración — {profile?.full_name}
+        </h1>
+        <button onClick={logout}>Cerrar sesión</button>
+      </div>
 
       <h2 style={{ fontSize: 16, marginBottom: 12 }}>Socios</h2>
       <CreateMemberForm />
