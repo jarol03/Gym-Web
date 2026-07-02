@@ -29,18 +29,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <main className={styles.main}>{children}</main>
 
-      {isAdmin && (
+      {!isAdmin && (
         <nav className={styles.bottomNav}>
-          <button
-            className={`${styles.navItem} ${location.pathname === '/admin' ? styles.navActive : ''}`}
-            onClick={() => navigate('/admin')}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
-              <rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
-            </svg>
-            <span>Panel</span>
-          </button>
           <button
             className={`${styles.navItem} ${location.pathname === '/' ? styles.navActive : ''}`}
             onClick={() => navigate('/')}

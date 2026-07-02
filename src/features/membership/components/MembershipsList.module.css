@@ -104,13 +104,24 @@
 .badgeOverdue { background: var(--red-glow); color: var(--red); }
 
 .actionBtn {
-  width: 32px;
-  height: 32px;
+  width: auto;
+  height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 2px;
+  padding: 4px 6px;
   border-radius: var(--radius-sm);
   transition: all 0.15s;
+}
+
+.btnLabel {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .actionBtn:disabled {
