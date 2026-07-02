@@ -36,7 +36,7 @@ Deno.serve(async (req: Request) => {
       .single();
 
     if (callerProfile?.role !== "admin") {
-      return jsonResponse({ error: "Solo el admin puede crear socios" }, 403);
+      return jsonResponse({ error: "Solo el admin puede crear usuarios" }, 403);
     }
 
     const { full_name, phone, cedula, pin, role } = await req.json();

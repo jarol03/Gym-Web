@@ -72,7 +72,7 @@ export function LoginForm() {
             <path d="M12 18v3" />
           </svg>
         </div>
-        <h1 className={styles.brandName}>Iron Fit</h1>
+        <h1 className={styles.brandName}>Gym 21 de Febrero</h1>
         <p className={styles.brandSub}>Gimnasio</p>
       </div>
 

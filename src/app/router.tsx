@@ -184,8 +184,8 @@ function AdminDashboardPage() {
             </div>
           </div>
         )}
-        {tab === "socios" && (
-          <div key="socios" style={{ animation: "slideUp 0.4s var(--spring-smooth)" }}>
+        {tab === "usuarios" && (
+          <div key="usuarios" style={{ animation: "slideUp 0.4s var(--spring-smooth)" }}>
             <CreateMemberForm />
             <MembershipsList />
           </div>

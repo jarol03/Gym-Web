@@ -59,7 +59,7 @@ export function CreateMemberForm() {
 
       <div className={styles.field}>
         <label className={styles.label}>Nombre completo</label>
-        <input className={styles.input} placeholder="Juan Pérez" {...register('full_name')} />
+        <input className={styles.input} placeholder="Harold Espinal" {...register('full_name')} />
         {errors.full_name && <span className={styles.error}>{errors.full_name.message}</span>}
       </div>
 
@@ -79,12 +79,12 @@ export function CreateMemberForm() {
       <div className={styles.row}>
         <div className={styles.field}>
           <label className={styles.label}>PIN</label>
-          <input type="password" inputMode="numeric" maxLength={4} className={styles.input} {...register('pin')} />
+          <input type="password" inputMode="numeric" maxLength={4} className={styles.input} placeholder='4 Dígitos...'{...register('pin')} />
           {errors.pin && <span className={styles.error}>{errors.pin.message}</span>}
         </div>
         <div className={styles.field}>
           <label className={styles.label}>Confirmar PIN</label>
-          <input type="password" inputMode="numeric" maxLength={4} className={styles.input} {...register('confirmPin')} />
+          <input type="password" inputMode="numeric" maxLength={4} className={styles.input} placeholder='4 Dígitos...'{...register('confirmPin')} />
           {errors.confirmPin && <span className={styles.error}>{errors.confirmPin.message}</span>}
         </div>
       </div>

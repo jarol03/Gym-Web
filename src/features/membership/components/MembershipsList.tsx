@@ -55,7 +55,7 @@ export function MembershipsList() {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
         </svg>
-        Error al cargar socios
+        Error al cargar usuarios
       </div>
     )
   }
@@ -66,7 +66,7 @@ export function MembershipsList() {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
         </svg>
-        No hay socios registrados
+        No hay usuarios registrados
       </div>
     )
   }

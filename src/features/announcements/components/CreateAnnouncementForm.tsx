@@ -32,13 +32,13 @@ export function CreateAnnouncementForm() {
 
       <div className={styles.field}>
         <label className={styles.label}>Título</label>
-        <input className={styles.input} placeholder="Cierre por mantenimiento" {...register('title')} />
+        <input className={styles.input} placeholder="Escribe un título..." {...register('title')} />
         {errors.title && <span className={styles.error}>{errors.title.message}</span>}
       </div>
 
       <div className={styles.field}>
         <label className={styles.label}>Mensaje</label>
-        <textarea className={styles.textarea} placeholder="El gym cerrará el..." {...register('body')} />
+        <textarea className={styles.textarea} placeholder="Escribe un mensaje..." {...register('body')} />
         {errors.body && <span className={styles.error}>{errors.body.message}</span>}
       </div>
 

@@ -52,7 +52,7 @@ export function AdminStats() {
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
           </svg>
         }
-        label="Total socios"
+        label="Total usuarios"
         value={totalMembers}
         color="var(--purple)"
         sub={`${activeCount} activos · ${overdueCount} vencidos`}
@@ -87,7 +87,7 @@ export function AdminStats() {
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
         }
-        label="Socios vencidos"
+        label="Usuarios vencidos"
         value={overdueCount}
         color="var(--red)"
         delay={0.26}
