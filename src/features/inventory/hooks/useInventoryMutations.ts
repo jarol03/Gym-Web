@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createInventoryItem, updateQuantity, deleteInventoryItem } from '../api'
+import type { InventoryItem } from '../types'
 
 export function useCreateItem() {
   const queryClient = useQueryClient()
@@ -14,7 +15,22 @@ export function useUpdateQuantity() {
   return useMutation({
     mutationFn: ({ itemId, newQuantity }: { itemId: string; newQuantity: number }) =>
       updateQuantity(itemId, newQuantity),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['inventory'] }),
+    onMutate: async ({ itemId, newQuantity }) => {
+      await queryClient.cancelQueries({ queryKey: ['inventory'] })
+      const previous = queryClient.getQueryData<InventoryItem[]>(['inventory'])
+      queryClient.setQueryData<InventoryItem[]>(['inventory'], (old) =>
+        old?.map((item) =>
+          item.id === itemId ? { ...item, quantity: newQuantity } : item
+        )
+      )
+      return { previous }
+    },
+    onError: (_err, _vars, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['inventory'], context.previous)
+      }
+    },
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ['inventory'] }),
   })
 }
 

@@ -17,5 +17,5 @@ supabase/.temp
 .opencode/node_modules/
 .agents/node_modules/
 
-# Si en algún momento generás skills con secretos/tokens de prueba embebidos
-# (no debería pasar, pero por las dudas revisá antes de commitear)
+# Lock file de instalación de skills (opcional ignorarlo o no, ver nota abajo)
+skills-lock.json
