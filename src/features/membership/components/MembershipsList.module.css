@@ -155,6 +155,17 @@
   transform: scale(0.95);
 }
 
+.undoBtn {
+  background: var(--surface-2);
+  color: var(--orange);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.undoBtn:hover:not(:disabled) {
+  background: var(--orange-glow);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
 .emptyState {
   display: flex;
   flex-direction: column;

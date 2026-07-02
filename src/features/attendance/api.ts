@@ -51,3 +51,22 @@ export async function fetchTodayAttendance(): Promise<string[]> {
 
   return data.map((row) => row.member_id);
 }
+
+export async function undoAttendance(
+  memberId: string,
+  adminId: string,
+): Promise<void> {
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const { error } = await supabase
+    .from("attendance")
+    .delete()
+    .eq("member_id", memberId)
+    .eq("marked_by", adminId)
+    .gte("checked_in_at", todayStart.toISOString());
+
+  if (error) {
+    throw new Error("No se pudo revertir la asistencia");
+  }
+}
