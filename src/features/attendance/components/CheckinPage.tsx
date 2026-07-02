@@ -10,87 +10,89 @@ export function CheckinPage() {
   const navigate = useNavigate()
   const { profile } = useAuth()
   const { error: geoError, loading: geoLoading, requestLocation } = useGeolocation()
-
   const [status, setStatus] = useState<'idle' | 'checking' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
   const qrToken = searchParams.get('token')
 
   async function handleCheckin() {
-    if (!qrToken) {
-      setStatus('error')
-      setErrorMessage('Código QR inválido o incompleto')
-      return
-    }
-
-    if (!profile) {
-      navigate('/login')
-      return
-    }
-
-    setStatus('checking')
-    setErrorMessage(null)
-
+    if (!qrToken) { setStatus('error'); setErrorMessage('Código QR inválido o incompleto'); return }
+    if (!profile) { navigate('/login'); return }
+    setStatus('checking'); setErrorMessage(null)
     const location = await requestLocation()
-
-    if (!location) {
-      setStatus('error')
-      setErrorMessage(geoError ?? 'No se pudo obtener tu ubicación')
-      return
-    }
-
+    if (!location) { setStatus('error'); setErrorMessage(geoError ?? 'No se pudo obtener tu ubicación'); return }
     const result = await checkinAttendance(profile.id, location.latitude, location.longitude, qrToken)
-
-    if (!result.success) {
-      setStatus('error')
-      setErrorMessage(result.error ?? 'No se pudo registrar tu asistencia')
-      return
-    }
-
+    if (!result.success) { setStatus('error'); setErrorMessage(result.error ?? 'No se pudo registrar tu asistencia'); return }
     setStatus('success')
   }
 
   if (!qrToken) {
     return (
-      <div className={styles.container}>
-        <p className={styles.title}>Código QR inválido</p>
-        <p className={styles.subtitle}>Escanea el código QR ubicado en el gimnasio para registrar tu asistencia.</p>
+      <div className={styles.wrapper}>
+        <div className={styles.glowOrb} />
+        <div className={styles.iconWrap}>
+          <div className={styles.iconRing} />
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <rect x="7" y="7" width="3" height="3" /><rect x="14" y="7" width="3" height="3" />
+            <rect x="7" y="14" width="3" height="3" /><rect x="14" y="14" width="3" height="3" />
+          </svg>
+        </div>
+        <h1 className={styles.title}>QR inválido</h1>
+        <p className={styles.subtitle}>Escanea el código QR ubicado en el gimnasio</p>
       </div>
     )
   }
 
   if (status === 'success') {
     return (
-      <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <div className={styles.glowOrb} />
         <div className={styles.successBox}>
-          <p className={styles.title} style={{ color: '#15803d' }}>¡Asistencia registrada!</p>
-          <p>Bienvenido al gym, {profile?.full_name}.</p>
+          <div className={styles.iconWrap}>
+            <div className={`${styles.iconRing} ${styles.iconRingSuccess}`} />
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+          <h1 className={styles.successTitle}>Asistencia registrada</h1>
+          <p className={styles.successName}>Bienvenido, {profile?.full_name}</p>
         </div>
-        <button className={styles.button} style={{ marginTop: 20 }} onClick={() => navigate('/')}>
-          Volver al inicio
-        </button>
+        <button className={styles.backBtn} onClick={() => navigate('/')}>Volver al inicio</button>
       </div>
     )
   }
 
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>Registrar asistencia</p>
-      <p className={styles.subtitle}>
-        Vamos a verificar tu ubicación para confirmar que estás en el gimnasio.
-      </p>
-
-      <button
-        className={styles.button}
-        onClick={handleCheckin}
-        disabled={status === 'checking' || geoLoading}
-      >
-        {status === 'checking' || geoLoading ? 'Verificando ubicación...' : 'Confirmar asistencia'}
-      </button>
-
-      {status === 'error' && errorMessage && (
-        <div className={styles.errorBox}>{errorMessage}</div>
-      )}
+    <div className={styles.wrapper}>
+      <div className={styles.glowOrb} />
+      <div className={styles.content}>
+        <div className={styles.iconWrap}>
+          <div className={styles.iconRing} />
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <h1 className={styles.title}>Registrar asistencia</h1>
+        <p className={styles.subtitle}>Verificaremos tu ubicación para confirmar que estás en el gimnasio</p>
+        <button className={styles.checkinBtn} onClick={handleCheckin} disabled={status === 'checking' || geoLoading}>
+          {status === 'checking' || geoLoading ? (
+            <span className={styles.btnLoading}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.spinner}>
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Verificando...
+            </span>
+          ) : 'Confirmar asistencia'}
+        </button>
+        {status === 'error' && errorMessage && (
+          <div className={styles.errorBox}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            {errorMessage}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

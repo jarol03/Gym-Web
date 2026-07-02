@@ -1,89 +1,166 @@
 .container {
-  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@keyframes rowSlide {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: rowSlide 0.3s ease-out both;
+  transition: all 0.2s;
 }
 
-.rowLowStock {
-  border-color: #fca5a5;
-  background: #fef2f2;
+.row:hover { border-color: var(--surface-3); }
+
+.rowLow {
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.03);
 }
+
+.rowAccent {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--cyan);
+}
+
+.rowLow .rowAccent { background: var(--orange); }
 
 .info {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
+  flex: 1;
 }
 
-.name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #111827;
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.category {
-  font-size: 12px;
-  color: #9ca3af;
+.name { font-size: 14px; font-weight: 600; color: var(--text); }
+
+.category { font-size: 11px; color: var(--text-muted); }
+
+.lowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--orange);
+  background: var(--orange-glow);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
-.qtyButton {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
+.qtyBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
   cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
+  transition: all 0.15s;
 }
 
-.qtyButton:hover {
-  background: #f3f4f6;
+.qtyBtn:hover {
+  background: var(--surface-3);
+  color: var(--text);
+  border-color: var(--cyan);
 }
+
+.qtyBtn:active { transform: scale(0.9); }
 
 .quantity {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   min-width: 28px;
   text-align: center;
+  color: var(--text);
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
 }
 
-.lowStockLabel {
-  font-size: 11px;
-  color: #dc2626;
-  font-weight: 600;
+.deleteBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition: all 0.15s;
+  margin-left: 2px;
 }
 
-.deleteButton {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  cursor: pointer;
-  font-size: 13px;
-  margin-left: 8px;
+.deleteBtn:hover {
+  color: var(--red);
+  background: var(--red-glow);
 }
 
-.deleteButton:hover {
-  color: #dc2626;
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
 }
 
-.loadingText,
-.errorText {
-  padding: 1.5rem;
-  color: #6b7280;
+.skelRow {
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
 }
