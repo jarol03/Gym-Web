@@ -12,3 +12,10 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 supabase/.temp
+
+# node_modules que genera el bug de la CLI de skills al instalar para OpenCode
+.opencode/node_modules/
+.agents/node_modules/
+
+# Si en algún momento generás skills con secretos/tokens de prueba embebidos
+# (no debería pasar, pero por las dudas revisá antes de commitear)
